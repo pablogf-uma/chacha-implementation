@@ -16,3 +16,5 @@ This repository contains a C implementation of the stream cipher algorithm ChaCh
 
 
 - What is Poly1305?
+
+- What are test vectors?
