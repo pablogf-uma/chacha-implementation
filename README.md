@@ -9,12 +9,15 @@ This repository contains a C implementation of the stream cipher algorithm ChaCh
 
 <h2> Introductory Questions:</h2>
 
-- What is a stream cipher? What makes a stream cipher different from a block cipher?
+- ***What is a stream cipher? What makes a stream cipher different from a block cipher?***
+  
 A stream cipher is a type of encryption algorithm that encrypts byte by byte (or bit by bit) continuously. Block ciphers, instead, break the plaintext into sections (blocks of 64 or 128 bits) and operates on those blocks to encrypt the plaintext.
 
-- What is an AEAD?
 
 
-- What is Poly1305?
+- ***What is an AEAD?***
 
-- What are test vectors?
+
+- ***What is Poly1305?***
+
+- ***What are test vectors?***
