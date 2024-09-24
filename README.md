@@ -6,3 +6,13 @@ This repository contains a C implementation of the stream cipher algorithm ChaCh
 - [RFC](https://datatracker.ietf.org/doc/html/draft-agl-tls-chacha20poly1305-04#section-7)
 
 - [Algorithm Explanation](https://musigma.blog/2021/02/06/chacha.html)
+
+<h2> Introductory Questions:</h2>
+
+- What is a stream cipher and what does it make a stream cipher different than a block cipher?
+
+
+- What is an AEAD?
+
+
+- What is Poly1305?
