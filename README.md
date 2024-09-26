@@ -1,4 +1,4 @@
-<h1 align="center">ChaCha Implementation</h1>
+<h1 align="center">ChaCha20 Implementation</h1>
 This repository contains a C implementation of the stream cipher algorithm ChaCha. Find below some useful links that were used throughout the development of this project:
 
 - [Paper](https://cr.yp.to/chacha/chacha-20080120.pdf)
