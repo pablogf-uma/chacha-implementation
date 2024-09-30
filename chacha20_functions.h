@@ -1,10 +1,10 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-void quarter_round(int state[], int a, int b, int c, int d);
+void quarter_round(int *state, int a, int b, int c, int d);
 
-void columns(int state[]);
+void columns(int *state);
 
-void diagonals(int state[]);
+void diagonals(int *state);
 
-#endif // FUNCTIONS_H
+#endif // CHACHA20_FUNCTIONS_H
