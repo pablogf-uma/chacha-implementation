@@ -7,4 +7,6 @@ void columns(int *state);
 
 void diagonals(int *state);
 
+void state_init(char *constant, int key, int position, int nonce);
+
 #endif // CHACHA20_FUNCTIONS_H

@@ -10,6 +10,7 @@ int main()
                     12, 13, 14, 15 };
     int i;
     
+    // 20 total rounds.
     for (i = 1; i <= 20; i++)
     {
         // Operate on columns for even rounds.
