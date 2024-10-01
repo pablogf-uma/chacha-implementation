@@ -18,21 +18,14 @@ int main()
     int state[16];
     memcpy(state, original_state, sizeof(original_state));
     
-    // Permutations on the state: 20 total rounds.
-    for (int i = 1; i <= 20; i++)
+    // Permutations on the state: 20 total rounds (10 column-diagonal permutations)
+    for (int i = 1; i < 10; i++)
     {
-        // Operate on columns for even rounds.
-        if(i % 2 == 0){
-            columns(state);
-        }
-
-        // Operate on diagonals for odd rounds.
-        else {
-            diagonals(state);
-        }
+        columns(state);
+        diagonals(state);
     }
 
-    // Output:
+    // Output state matrices:
 
         // Original state matrix:
     printf("Original state matrix:\n");
@@ -49,7 +42,7 @@ int main()
     
     printf("\n");
 
-        // Encrypted state matrix:
+        // Permuted state matrix:
     printf("Encrypted state matrix:\n");
     for (int e = 0; e < 4; e++)
     {
@@ -59,6 +52,28 @@ int main()
             printf(" ");
         }
         printf("\n");
+    }
+
+    printf("\n");
+
+    // Ask for input for encryption:
+    char msg[80];
+    printf("Enter your message: \n");
+    if (fgets(msg, sizeof(msg), stdin))
+    {
+        // Remove newline character from fgets if present:
+        size_t len = strlen(msg);
+        if (len > 0 && msg[len - 1] == '\n')
+            msg[len - 1] = '\0';
+
+        // Encrypt the message using XOR and state as key:
+        char encrypted_msg[80];
+        for (size_t i = 0; i < len; i++) {
+            encrypted_msg[i] = msg[i] ^ ((char*)state)[i % sizeof(state)];
+        }
+        encrypted_msg[len] = '\0';
+        printf("This is the encrypted message:\n");
+        printf("%s\n", encrypted_msg);
     }
 
     return 0;
