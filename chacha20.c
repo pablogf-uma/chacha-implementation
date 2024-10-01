@@ -66,7 +66,7 @@ int main()
         if (len > 0 && msg[len - 1] == '\n')
             msg[len - 1] = '\0';
 
-        // Encrypt the message using XOR and state as key:
+    // Encrypt the message using XOR and state as key:
         char encrypted_msg[80];
         for (size_t i = 0; i < len; i++) {
             encrypted_msg[i] = msg[i] ^ ((char*)state)[i % sizeof(state)];
