@@ -4,7 +4,7 @@
 // quarter_round operates on the 4 diagonals of the initial state.
 // Remember that in C, we can index 2D matrices lke a 1D array flat list of values.
 
-void diagonals(int *state)
+void diagonals(int state[])
 {
     quarter_round(state, 0, 5, 10, 15); // The first diagonal is the commplete middle one.
     quarter_round(state, 1, 6, 11, 12);  // The second is the one on top of the first one, etc.
