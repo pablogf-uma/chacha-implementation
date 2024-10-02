@@ -1,7 +1,7 @@
 # include <stdio.h>
 # include "chacha20_functions.h"
 
-// quarter_round operates on the 4 diagonals of the initial state.
+// Performs a quarter_round operation on the 4 diagonals of the state.
 // Remember that in C, we can index 2D matrices lke a 1D array flat list of values.
 
 void diagonals(int state[])

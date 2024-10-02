@@ -1,11 +1,12 @@
 # include <stdio.h>
 # include <string.h>
 
+// Sets the initial state of the state with the specified parameters.
 // Parameters:
-// Constant: 16 bytes ASCII-encoded string “expand 32-byte k”
-// Key: 32 bytes.
-// Block Counter: 4 bytes.
-// Nonce: 12 bytes.
+//      - Constant: 16 bytes ASCII-encoded string “expand 32-byte k”
+//      - Key: 32 bytes.
+//      - Block Counter: 4 bytes.
+//      - Nonce: 12 bytes.
 void state_init(int state[16], const char *constant, const int key[8], int blockcount, const int nonce[3])
 {
     // Load the initial state of 0s.
