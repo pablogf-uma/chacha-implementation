@@ -53,7 +53,7 @@ void state_init(int state[16], const char *constant, const int key[8], int block
 
     /*
 
-    //USED FOR TESTING: Output the state matrix.
+    // TESTING: Output the state matrix.
     int a, b;
     for (a = 0; a < 4; a++)
     {
@@ -71,7 +71,7 @@ void state_init(int state[16], const char *constant, const int key[8], int block
 
 /*
 
-//USED FOR TESTING: Main function to test the state_init function.
+// TESTING: Main function to test the state_init function.
 int main()
 {
     int state[4][4];

@@ -5,19 +5,20 @@
 int main()
 {
     // Parameters for the initial state:
-    int original_state[16];
+    // Use of unsigned int: Ensures that bit-wise operations are performed without sign extension
+    unsigned int original_state[16];
     const char constant[16] = "apxe3 dnyb-2k et"; // Specified by the RFC, usually "expand 32-byte k"
-    int key[8] = { 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    unsigned int key[8] = { 0x00000000, 0x00000000, 0x00000000, 0x00000000,
                     0x00000000, 0x00000000, 0x00000000, 0x00000000 };
-    int blockcount = 0;
-    int nonce[3] = {0x00000000, 0x00000000, 0x00000000};
+    unsigned int blockcount = 0;
+    unsigned int nonce[3] = {0x00000000, 0x00000000, 0x00000000};
 
     // Initialize the state with the specified parameters
     state_init(original_state, constant, key, blockcount, nonce);
 
     // "state" will hold the permutated state:
-    int state[16];
-    memcpy(state, original_state, sizeof(int) * 16);
+    unsigned int state[16];
+    memcpy(state, original_state, sizeof(unsigned int) * 16);
 
     // permute_block() function call:
     permute_block(state, constant, key, blockcount, nonce, state);

@@ -2,9 +2,9 @@
 # include <string.h>
 # include "chacha20_functions.h"
 
-void permute_block(int original_state[16], const char *constant, int key[8], int blockcount, int nonce[3], int output_state[16])
+void permute_block(unsigned int original_state[16], const char *constant, unsigned int key[8], unsigned int blockcount, unsigned int nonce[3], int unsigned output_state[16])
 {
-    memcpy(output_state, original_state, sizeof(int) * 16);
+    memcpy(output_state, original_state, sizeof(unsigned int) * 16);
     
     // Perform permutations on the state: 20 total rounds (10 column-diagonal operations)
     for (int i = 0; i < 10; i++)
