@@ -7,7 +7,7 @@ void permute_block(int original_state[16], const char *constant, int key[8], int
     memcpy(output_state, original_state, sizeof(int) * 16);
     
     // Perform permutations on the state: 20 total rounds (10 column-diagonal operations)
-    for (int i = 1; i < 10; i++)
+    for (int i = 0; i < 10; i++)
     {
         columns(output_state);
         diagonals(output_state);
