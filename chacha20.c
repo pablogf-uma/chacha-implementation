@@ -1,24 +1,26 @@
 # include <stdio.h>
 # include <string.h>
+# include <stdint.h>
+# include <string.h>
 # include "chacha20_functions.h"
 
 int main()
 {
     // Parameters for the initial state:
-    // Use of unsigned int: Ensures that bit-wise operations are performed without sign extension
-    unsigned int original_state[16];
-    const char constant[16] = "apxe3 dnyb-2k et"; // Specified by the RFC, usually "expand 32-byte k"
-    unsigned int key[8] = { 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    // Use of uint32_t (unsigned 32 int): Ensures that bit-wise operations are performed without sign extension
+    uint32_t original_state[16];
+    char constant[16] = "apxe3 dnyb-2k et"; // Specified by the RFC, usually "expand 32-byte k"
+    uint32_t key[8] = { 0x00000000, 0x00000000, 0x00000000, 0x00000000,
                     0x00000000, 0x00000000, 0x00000000, 0x00000000 };
-    unsigned int blockcount = 0;
-    unsigned int nonce[3] = {0x00000000, 0x00000000, 0x00000000};
+    uint32_t blockcount = 0;
+    uint32_t nonce[3] = {0x00000000, 0x00000000, 0x00000000};
 
     // Initialize the state with the specified parameters
     state_init(original_state, constant, key, blockcount, nonce);
 
     // "state" will hold the permutated state:
-    unsigned int state[16];
-    memcpy(state, original_state, sizeof(unsigned int) * 16);
+    uint32_t state[16];
+    memcpy(state, original_state, sizeof(uint32_t) * 16);
 
     // permute_block() function call:
     permute_block(state, constant, key, blockcount, nonce, state);

@@ -1,5 +1,6 @@
 # include <stdio.h>
 # include <string.h>
+# include <stdint.h>
 
 // Sets the initial state of the state with the specified parameters.
 // Parameters:
@@ -7,7 +8,7 @@
 //      - Key: 32 bytes.
 //      - Block Counter: 4 bytes.
 //      - Nonce: 12 bytes.
-void state_init(int state[16], const char *constant, const int key[8], int blockcount, const int nonce[3])
+void state_init(uint32_t state[16], const char *constant, uint32_t key[8], uint32_t blockcount, uint32_t nonce[3])
 {
     // Load the initial state of 0s.
     int i, j;
@@ -24,10 +25,10 @@ void state_init(int state[16], const char *constant, const int key[8], int block
     // Bitwise OR operation | combines the 4 bytes into a single 32-bit integer.
     for (i = 0; i < 4; i++)
     {
-        state[i] = ((unsigned int)constant[i * 4] << 24) |
-                      ((unsigned int)constant[i * 4 + 1] << 16) |
-                      ((unsigned int)constant[i * 4 + 2] << 8) |
-                      ((unsigned int)constant[i * 4 + 3]);
+        state[i] = ((uint32_t)constant[i * 4] << 24) |
+                      ((uint32_t)constant[i * 4 + 1] << 16) |
+                      ((uint32_t)constant[i * 4 + 2] << 8) |
+                      ((uint32_t)constant[i * 4 + 3]);
     }
 
     // Separate the key into 2 groups of 16 bytes (one for each row)

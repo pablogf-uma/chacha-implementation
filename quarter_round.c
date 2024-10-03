@@ -1,8 +1,9 @@
 # include <stdio.h>
+# include <stdint.h>
 
 // Performs a quarter round on a given state.
 // Parameters: The initial state and the 4 indexes of the cells that will be used to operate.
-void quarter_round(int state[], int a, int b, int c, int d)
+void quarter_round(uint32_t state[], int a, int b, int c, int d)
 {
     state[a] += state[b];
     state[d] ^= state[a];
