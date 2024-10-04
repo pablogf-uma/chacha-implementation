@@ -11,62 +11,48 @@
 void state_init(uint32_t state[16], const char *constant, uint32_t key[8], uint32_t blockcount, uint32_t nonce[3])
 {
     // Load the initial state of 0s.
-    int i, j;
-    for (i = 0; i < 16; i++)
+    for (int i = 0; i < 16; i++)
     {
-        for (j = 0; j < 4; j++)
-        {
-            state[i] = 0;
-        }
+        state[i] = 0;
     }
 
-    // Separate the constant into 4 bytes (4 letters) and assign them to the first column of the state.
+    // Separate the constant (in little endian) into 4 bytes (4 letters) and assign them to the first column of the state.
     // Left shift operation << moves the bits to the left by the specified number of positions.
     // Bitwise OR operation | combines the 4 bytes into a single 32-bit integer.
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
-        state[i] = ((uint32_t)constant[i * 4] << 24) |
-                      ((uint32_t)constant[i * 4 + 1] << 16) |
-                      ((uint32_t)constant[i * 4 + 2] << 8) |
-                      ((uint32_t)constant[i * 4 + 3]);
+        state[i] = ((uint32_t)constant[i * 4] & 0xff) |  // least significant byte first
+                ((uint32_t)constant[i * 4 + 1] & 0xff) << 8 |
+                ((uint32_t)constant[i * 4 + 2] & 0xff) << 16 |
+                ((uint32_t)constant[i * 4 + 3] & 0xff) << 24;  // most significant byte last
     }
 
     // Separate the key into 2 groups of 16 bytes (one for each row)
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 8; i++)
     {
         state[4 + i] = key[i];
-    }
-
-    for (i = 4; i < 8; i++)
-    {
-        state[8 + (i - 4)] = key[i];
     }
 
     // Assign the blockcount to the first element of the last row of the state.
     state[12] = blockcount;
 
     // Assign each element of the nonce to the last row of the state.
-    for (i = 1; i < 4; i++)
+    for (int i = 0; i < 3; i++)
     {
         state[13 + i] = nonce[i];
     }
-
-
-    /*
-
-    // TESTING: Output the state matrix.
-    int a, b;
-    for (a = 0; a < 4; a++)
-    {
-        for (b = 0; b < 4; b++)
-        {
-            printf("%08x", state[a][b]); // Output in hexadecimal format (without the 0x prefix).
-            printf(" ");
-        }
-        printf("\n");
-    }
     
-    */  
+/*
+    // TESTING: Output the state matrix.
+    
+    for (int a = 0; a < 16; a++)
+    {
+        printf("%08x", state[a]); // Output in hexadecimal format (without the 0x prefix).
+        printf(" ");
+    }
+    printf("\n");
+    */
+    
 }
 
 
@@ -75,7 +61,7 @@ void state_init(uint32_t state[16], const char *constant, uint32_t key[8], uint3
 // TESTING: Main function to test the state_init function.
 int main()
 {
-    int state[4][4];
+    int state[16];
     const char constant[16] = "expand 32-byte k";
     int key[8] = {0x00010203, 0x04050607, 0x08090a0b, 0x0c0d0e0f, 0x10111213, 0x14151617, 0x18191a1b, 0x1c1d1e1f};
     int blockcount = 0;
@@ -84,5 +70,4 @@ int main()
 
     return 0;
 }
-
 */
