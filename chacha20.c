@@ -10,10 +10,18 @@ int main()
     // Use of uint32_t (unsigned 32 int): Ensures that bit-wise operations are performed without sign extension
     uint32_t original_state[16];
     char constant[16] = "expand 32-byte k";
-    uint32_t key[8] = { 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-                    0x00000000, 0x00000000, 0x00000000, 0x00000000 };
-    uint32_t blockcount = 0;
-    uint32_t nonce[3] = {0x00000000, 0x00000000, 0x00000000};
+    uint8_t key[32] = { 0x00, 0x01, 0x02, 0x03,
+                        0x04, 0x05, 0x06, 0x07,
+                        0x08, 0x09, 0x0A, 0x0B,
+                        0x0C, 0x0D, 0x0E, 0x0F,
+                        0x10, 0x11, 0x12, 0x13,
+                        0x14, 0x15, 0x16, 0x17,
+                        0x18, 0x19, 0x1A, 0x1B,
+                        0x1C, 0x1D, 0x1E, 0x1F};
+    uint32_t blockcount = 1;
+    uint8_t nonce[12] = { 0x00, 0x00, 0x00, 0x09, 
+                        0x00, 0x00, 0x00, 0x4a,
+                        0x00, 0x00, 0x00, 0x00 };
 
     // Initialize the state with the specified parameters
     state_init(original_state, constant, key, blockcount, nonce);
@@ -23,7 +31,7 @@ int main()
     memcpy(state, original_state, sizeof(uint32_t) * 16);
 
     // permute_block() function call:
-    permute_block(state, constant, key, blockcount, nonce, state);
+    permute_block(state, state);
 
 
 
@@ -31,42 +39,33 @@ int main()
 
 
 
-// Output state matrices:
-    printf("\nOriginal state matrix (little-endian):\n");
+//     // Output the state matrix
+//     printf("\nOriginal state matrix:\n");
 
-    for (int a = 0; a < 4; a++)
-    {
-        for (int b = 0; b < 4; b++)
-        {
-            // To output bytes in little endian, since printf() outputs them in big-endian
-            uint32_t x = original_state[a * 4 + b]; // Finding each element's index: row * 4 + column
-            unsigned char* ptr = (unsigned char*)&x; // Access the address of the integer
-            for(int i = 0; i < sizeof(uint32_t); i++)
-            {
-                printf("%02x", ptr[i]); // Output in hexadecimal format
-            }                           
-            printf(" ");                              
-        }
-        printf("\n");
-    }
+//     for (int a = 0; a < 4; a++)  // Loop over rows
+//     {
+//         for (int b = 0; b < 4; b++)  // Loop over columns
+//         {
+//             printf("%08x ", original_state[a * 4 + b]);  // Finding each element's index: row * 4 + column
+//         }
+//         printf("\n");  // New line after each row
+//     }
+
     
-    printf("\n");
+//     printf("\n");
 
-    printf("Permuted state matrix (little-endian):\n");
-    for (int e = 0; e < 4; e++)
-    {
-        for (int d = 0; d < 4; d++)
-        {
-            uint32_t y = state[e * 4 + d];
-            unsigned char* ptr2 = (unsigned char*)&y;
-            for(int i = 0; i < sizeof(uint32_t); i++)
-            {
-                printf("%02x", ptr2[i]);
-            }                           
-            printf(" ");
-        }
-        printf("\n");
-    }
-    printf("\n");
-    return 0;
+//     // Output the state matrix
+//     printf("Permuted state matrix:\n");
+
+//     for (int a = 0; a < 4; a++)
+//     {
+//         for (int b = 0; b < 4; b++)
+//         {
+//             printf("%08x ", state[a * 4 + b]);
+//         }
+//         printf("\n");
+//     }
+
+//     printf("\n");
+//     return 0;
 }
