@@ -2,14 +2,6 @@
 # include <string.h>
 # include <stdint.h>
 
-// Custom function to convert a 32-bit integer to little-endian format
-uint32_t to_little_endian(uint32_t value) {
-    return ((value & 0x000000FF) << 24) |
-           ((value & 0x0000FF00) << 8) |
-           ((value & 0x00FF0000) >> 8) |
-           ((value & 0xFF000000) >> 24);
-}
-
 /*
 
  Sets the initial state of the state with the specified parameters.
@@ -55,7 +47,7 @@ void state_init(uint32_t state[16], const char *constant, const uint8_t key[32],
 
 
     // Assign the blockcount to the first element of the last row of the state (in little-endian format)
-    state[12] = to_little_endian(blockcount);
+    state[12] = blockcount;
 
     // Separate the nonce into 3 32-bit words (in little-endian format)
     for (int i = 0; i < 3; i++) {
