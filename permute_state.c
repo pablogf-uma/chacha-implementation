@@ -3,7 +3,7 @@
 # include <string.h>
 # include "chacha20_functions.h"
 
-void permute_block(uint32_t state[16])
+void permute_state(uint32_t state[16], uint32_t output_keystream[64])
 {
     uint32_t original_state[16];
     for (int i = 0; i < 16; i++) {
@@ -30,25 +30,20 @@ void permute_block(uint32_t state[16])
     }
 
     // Sequence the words one-by-one in little-endian order
-    printf("Permutated serialized block:\n");
     for (size_t i = 0; i < 16; i++) {
         uint32_t word = state[i];
         state[i] = ((word & 0xFF000000) >> 24) |
                 ((word & 0x00FF0000) >> 8)  |
                 ((word & 0x0000FF00) << 8)  |
                 ((word & 0x000000FF) << 24);
-    
-        uint8_t byte0 = (word >> 0)  & 0xFF;
-        uint8_t byte1 = (word >> 8)  & 0xFF;
-        uint8_t byte2 = (word >> 16) & 0xFF;
-        uint8_t byte3 = (word >> 24) & 0xFF;
-        
-        // Print the 4 bytes in hexadecimal format
-        printf("%02x %02x %02x %02x ", byte0, byte1, byte2, byte3);
-        
-        // Add a newline every 4 words (16 bytes)
-        if ((i + 1) % 4 == 0) {
-            printf("\n");
-        }
+    }
+
+    // Serialize the permuted state into the output keystream
+    for (size_t i = 0; i < 16; i++) {
+        uint32_t word = state[i];
+        output_keystream[i * 4] = (word >> 0)  & 0xFF;
+        output_keystream[i * 4 + 1] = (word >> 8)  & 0xFF;
+        output_keystream[i * 4 + 2] = (word >> 16) & 0xFF;
+        output_keystream[i * 4 + 3] = (word >> 24) & 0xFF;
     }
 }

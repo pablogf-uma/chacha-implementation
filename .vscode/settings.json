@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdio.h": "c",
-        "chacha20_functions.h": "c"
+        "chacha20_functions.h": "c",
+        "string.h": "c"
     }
 }
