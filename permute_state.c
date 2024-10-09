@@ -10,6 +10,19 @@ void permute_state(uint32_t state[16], uint32_t output_keystream[64])
         original_state[i] = state[i];
     }
 
+/* TEST:
+    printf("\n");
+    for (int a = 0; a < 4; a++) 
+    {
+        for (int b = 0; b < 4; b++)
+        {
+            printf("%08x ", state[a * 4 + b]);  
+        }
+        printf("\n");  
+    }
+    printf("\n");
+*/
+
     // Perform permutations on the state: 20 total rounds (10 column-diagonal operations)
     for (int i = 0; i < 10; i++) {
         // Perform column operations
@@ -27,16 +40,20 @@ void permute_state(uint32_t state[16], uint32_t output_keystream[64])
     // Add the permuted state to the original state for pseudo-randomness:
     for (int i = 0; i < 16; i++) {
         state[i] = (state[i] + original_state[i]);
+
     }
 
-    // Sequence the words one-by-one in little-endian order
-    for (size_t i = 0; i < 16; i++) {
-        uint32_t word = state[i];
-        state[i] = ((word & 0xFF000000) >> 24) |
-                ((word & 0x00FF0000) >> 8)  |
-                ((word & 0x0000FF00) << 8)  |
-                ((word & 0x000000FF) << 24);
+/* TEST:
+    for (int a = 0; a < 4; a++) 
+    {
+        for (int b = 0; b < 4; b++)
+        {
+            printf("%08x ", state[a * 4 + b]);  
+        }
+        printf("\n");  
     }
+    printf("\n");
+*/
 
     // Serialize the permuted state into the output keystream
     for (size_t i = 0; i < 16; i++) {
@@ -46,4 +63,13 @@ void permute_state(uint32_t state[16], uint32_t output_keystream[64])
         output_keystream[i * 4 + 2] = (word >> 16) & 0xFF;
         output_keystream[i * 4 + 3] = (word >> 24) & 0xFF;
     }
+    
+/* TEST:
+    for (int i = 0; i < 64; i++) {
+        printf("%02x", output_keystream[i]);
+        printf(":");
+    }
+    printf("\b \b");
+    printf("\n");
+*/
 }

@@ -19,7 +19,7 @@ uint8_t key[32] = { 0x00, 0x01, 0x02, 0x03,
 
 
     uint8_t nonce[12] = { 0x00, 0x00, 0x00, 0x00, 
-                        0x00, 0x00, 0x00, 0x04,
+                        0x00, 0x00, 0x00, 0x4a,
                         0x00, 0x00, 0x00, 0x00 };
 
 
@@ -30,6 +30,25 @@ uint8_t key[32] = { 0x00, 0x01, 0x02, 0x03,
     char output[strlen(plaintext)];
     encrypt(state, constant, key, blockcount, nonce, plaintext, output);
 
+    // OUTPUT:
+    printf("\nPlaintext message:\n");
+    for (size_t i = 0; i < strlen(plaintext); i++) {
+        printf("%c", plaintext[i]);
+    }
+    printf("\n");
+
+    printf("\nPlaintext message (in hex):\n");
+    for (size_t i = 0; i < strlen(plaintext); i++) {
+        printf("%02x", plaintext[i]);
+        printf(" ");
+    }
+    printf("\n");
+
+    printf("\nEncrypted message:\n");
+    for (size_t i = 0; i < strlen(plaintext); i++) {
+        printf("%02x", (unsigned char)output[i]);
+        printf(" ");
+    }
 
     return 0;
 }
