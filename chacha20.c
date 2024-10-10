@@ -3,29 +3,6 @@
 #include <string.h>
 #include "chacha20_functions.h"
 
-// Test vector structure
-typedef struct {
-    uint8_t key[32];    
-    uint8_t nonce[12];
-    uint32_t blockcount;
-    char plaintext[512];
-    char expected_ciphertext[512];
-} test_vector_t;
-
-// Function to run a single test
-int run_test(test_vector_t *test) {
-    uint32_t state[16];
-    char output[512];
-    encrypt(state, "expand 32-byte k", test->key, test->blockcount, test->nonce, test->plaintext, output);
-
-    // Compare output with expected ciphertext
-    if (memcmp(output, test->expected_ciphertext, strlen(test->plaintext)) == 0) {
-        return 1; // Test passed
-    } else {
-        return 0; // Test failed
-    }
-}
-
 int main() {
     // Define test vectors
     test_vector_t tests[] = {
@@ -208,6 +185,8 @@ int main() {
         } else {
             printf("Test vector %d failed.\n", i);
         }
+        time_taken(&tests[i]);
+        printf("\n");
     }
 
     printf("%d/%d tests passed.\n", passed_tests, num_tests);
