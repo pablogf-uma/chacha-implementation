@@ -185,7 +185,7 @@ int main() {
         } else {
             printf("Test vector %d failed.\n", i);
         }
-        time_taken(&tests[i]);
+        calculate_throughput(&tests[i]);
         printf("\n");
     }
 

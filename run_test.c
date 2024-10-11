@@ -6,7 +6,7 @@
 // Function to run a single test
 int run_test(test_vector_t *test) {
     uint32_t state[16];
-    char output[512];
+    char output[5000];
     encrypt(state, "expand 32-byte k", test->key, test->blockcount, test->nonce, test->plaintext, output);
 
     // Compare output with expected ciphertext
