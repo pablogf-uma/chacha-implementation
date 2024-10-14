@@ -1,8 +1,8 @@
 # include <stdio.h>
-#include <windows.h>
 # include <time.h>
 # include <string.h>
 # include "chacha20_functions.h"
+#include <windows.h>
 
 /*
 
