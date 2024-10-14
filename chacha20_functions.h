@@ -14,7 +14,7 @@ void permute_state(uint32_t state[16], uint32_t output_keystream[64]);
 
 void encrypt(uint32_t state[16], const char *constant, const uint8_t key[32], uint32_t blockcount, const uint8_t nonce[12], char *plaintext, char *output);
 
-typedef struct {uint8_t key[32]; uint8_t nonce[12]; uint32_t blockcount; char plaintext[5000]; char expected_ciphertext[5000];} test_vector_t;
+typedef struct {uint8_t key[32]; uint8_t nonce[12]; uint32_t blockcount; char plaintext[100000]; char expected_ciphertext[100000];} test_vector_t;
 
 int run_test(test_vector_t *test);
 
