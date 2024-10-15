@@ -1,7 +1,4 @@
-import json
-from base64 import b64encode
 from Crypto.Cipher import ChaCha20
-from Crypto.Random import get_random_bytes
 
 plaintext = '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ligula tellus, interdum id rutrum in, ullamcorper vel sapien. Curabitur lacinia diam consequat metus scelerisque, a elementum turpis aliquet. Nullam facilisis massa non neque laoreet, at vestibulum risus hendrerit. Nam suscipit, enim eu maximus mattis, est risus molestie metus, eu venenatis ligula libero a purus. Vivamus justo justo, suscipit nec pulvinar ut, pharetra sodales sapien. Sed lacinia dapibus tempus. Cras nec est non sapien pretium tincidunt eget eu nisi. Nulla pharetra lectus quis consequat cursus. Nulla non aliquet eros, non aliquet odio. Praesent tincidunt purus risus, sed ultricies lacus rutrum non. Donec at ex vel velit feugiat tristique et interdum mauris.
 
