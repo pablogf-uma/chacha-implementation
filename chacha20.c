@@ -4,10 +4,10 @@
 #include "chacha20_functions.h"
 
 int main() {
-    // Define test vectors
+    // Define test vectors.
     test_vector_t tests[] = {
+        // Test vector 0 (RFC)
         {
-            // Test vector 0 (RFC)
             .key = { 
                 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
                 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
@@ -45,8 +45,8 @@ int main() {
             }
         },
 
+        // Test vector 1 (RFC)
         {
-            // Test vector 1 (RFC)
             .key = { 
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -76,7 +76,6 @@ int main() {
             }
         },
 
-        
         // Test vector 2
         {
             .key = { 
@@ -146,8 +145,7 @@ int main() {
                 0x7a, 0xc6, 0x1d, 0xd2, 0x9c, 0x6f, 0x21, 0xba, 0x5b, 0x86, 0x2f, 0x37, 0x30, 0xe3, 0x7c, 0xfd,
                 0xc4, 0xfd, 0x80, 0x6c, 0x22, 0xf2, 0x21
             }
-        },
-        
+        },        
         
         // Test vector 3 (RFC)
         {
@@ -212,10 +210,11 @@ int main() {
         }
     };
 
+    /* TEST VECTOR EXECUTION:*/
+
     int num_tests = sizeof(tests) / sizeof(test_vector_t);
     int passed_tests = 0;
 
-    // Run tests
     for (int i = 0; i < num_tests; i++) {
         if (run_test(&tests[i])) {
             printf("Test vector %d passed.\n", i);
@@ -223,11 +222,17 @@ int main() {
         } else {
             printf("Test vector %d failed.\n", i);
         }
-        calculate_throughput(&tests[i]);
+        // calculate_throughput(&tests[i]);
         printf("\n");
     }
 
     printf("%d/%d tests passed.\n", passed_tests, num_tests);
+   
+printf("\n---------------------------------------------\n\n");
+
+   /* CALCULATE THROUGHPUT 2: */
+
+    calculate_throughput_2();
 
     return 0;
 }

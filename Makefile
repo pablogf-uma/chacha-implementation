@@ -1,7 +1,7 @@
 # -*- MakeFile -*-
 
 chacha20: chacha20.o quarter_round.o state_init.o permute_state.o encrypt.o run_test.o calculate_throughput.o
-	gcc chacha20.o quarter_round.o state_init.o permute_state.o encrypt.o run_test.o calculate_throughput.o -o chacha20
+	gcc chacha20.o quarter_round.o state_init.o permute_state.o encrypt.o run_test.o calculate_throughput.o -O3 -o chacha20
 
 chacha20.o: chacha20.c
 	gcc -c chacha20.c

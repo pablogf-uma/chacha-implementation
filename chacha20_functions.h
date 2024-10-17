@@ -20,4 +20,6 @@ int run_test(test_vector_t *test);
 
 void calculate_throughput(test_vector_t *test);
 
+void calculate_throughput_2();
+
 #endif // CHACHA20_FUNCTIONS_H
