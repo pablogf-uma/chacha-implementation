@@ -16,6 +16,7 @@
 
 */
 
+// Not in use
 void calculate_throughput(test_vector_t *test)
 {
     // Calculate the time taken to encrypt the plaintext
