@@ -1,16 +1,24 @@
 <h1 align="center">ChaCha20 Implementation</h1>
 
+
 This repository contains a C implementation of the stream cipher algorithm ChaCha20.
 
-The program contains 5 test vectors (3 from RFC 8439) that confirm the correct functioning of the encryption algorithm.
 
-The project contains a python script that generates custom test vectors.
+<h2>Contents:</h2>
 
-The throughput of the cryptosystem is 135.5 MB/second with an i7-13620H Intel processor.
+- Source code of the algorithm.
+- Test vectors (3 from RFC 8439 and a total of 5) that confirm the correct functioning algorithm.
+- A python script that generates custom test vectors.
 
-Performs 2.5 million encryptions for different 512-bit plaintexts in 1 second.
+<h2>Performance:</h2>
 
-Find below some useful links that were used throughout the development of this project: 
+- Throughput: 135.5 MB/second with an i7-13620H Intel processor.
+
+- Performs 2.5 million encryptions for different 512-bit plaintexts in 1 second.
+
+<h2>Resources:</h2>
+
+These resources were used throughout the development of the project outlined above.
 
 - [Paper](https://cr.yp.to/chacha/chacha-20080120.pdf)
 
@@ -19,6 +27,3 @@ Find below some useful links that were used throughout the development of this p
 - [Algorithm Explanation](https://musigma.blog/2021/02/06/chacha.html)
   
 - [Algorithm Design](https://loup-vaillant.fr/tutorials/chacha20-design)
-
----
-
