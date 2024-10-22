@@ -94,7 +94,8 @@ void calculate_throughput_2()
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                
             };
     uint32_t expected_ciphertext = 0;
 
@@ -113,7 +114,7 @@ void calculate_throughput_2()
         encrypt(state, "expand 32-byte k", test.key, test.blockcount, test.nonce, test.plaintext, test.expected_ciphertext);
 
         // Update the number of bytes processe and the number of encrypt() calls.
-        bytes_processed += (int)strlen(test.plaintext);
+        bytes_processed += 64;
         encrypt_calls += 1;
 
         // Generate 3 random numbers for the positions where the parameters will be updated for the next iteration.
@@ -126,10 +127,11 @@ void calculate_throughput_2()
         int rand_num_nonce = rand() % (max_nonce - min + 1) + min;
         int rand_num_plaintext = rand() % (max_plaintext - min + 1) + min;
 
-        key[rand_num_key] += 1;
-        nonce[rand_num_nonce] += 1;
-        blockcount += 1;
-        plaintext[rand_num_plaintext] += 1;
+        // Update the parameters at random indexes with a random input
+        key[rand_num_key] = rand() % 256;
+        nonce[rand_num_nonce] = rand() % 256;
+        blockcount = rand();
+        plaintext[rand_num_plaintext] = rand() % 256;
 
     } while (((double)(clock() - start_time)) / CLOCKS_PER_SEC < 1.0); // Loop until 1 second has passed.
     

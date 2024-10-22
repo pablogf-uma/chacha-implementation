@@ -222,7 +222,6 @@ int main() {
         } else {
             printf("Test vector %d failed.\n", i);
         }
-        // calculate_throughput(&tests[i]);
         printf("\n");
     }
 
@@ -230,7 +229,7 @@ int main() {
    
 printf("\n---------------------------------------------\n\n");
 
-   /* CALCULATE THROUGHPUT 2: */
+   /* CALCULATE THROUGHPUT: */
 
     calculate_throughput_2();
 
