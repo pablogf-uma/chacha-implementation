@@ -1,35 +1,33 @@
 <h1 align="center">ChaCha20 Implementation</h1>
-This repository contains a C implementation of the stream cipher algorithm ChaCha. Find below some useful links that were used throughout the development of this project:
+
+
+This repository contains a C implementation of the stream cipher algorithm ChaCha20.
+
+
+<h2>Contents:</h2>
+
+- Source code of the algorithm.
+- Test vectors (3 from RFC 8439 and a total of 5) that confirm the correct functioning algorithm.
+- A Python script that generates custom test vectors.
+
+
+<h2>Performance:</h2>
+
+- Throughput: 135.5 MB/second with an i7-13620H Intel processor.
+
+- Performs 2.5 million encryptions for different 512-bit plaintexts in 1 second.
+
+
+<h2>Resources:</h2>
+
+These resources were used throughout the development of the project outlined above.
 
 - [Paper](https://cr.yp.to/chacha/chacha-20080120.pdf)
 
-- [RFC](https://datatracker.ietf.org/doc/html/draft-agl-tls-chacha20poly1305-04#section-7)
+- [RFC 8439](https://www.rfc-editor.org/rfc/rfc8439#section-2.1.1)
 
 - [Algorithm Explanation](https://musigma.blog/2021/02/06/chacha.html)
   
 - [Algorithm Design](https://loup-vaillant.fr/tutorials/chacha20-design)
 
----
-
-<h3>Introductory Questions:</h3>
-
-- ***What is a stream cipher? What makes a stream cipher different from a block cipher?***
-  
-A stream cipher is a type of encryption algorithm that encrypts byte by byte (or bit by bit) continuously. 
-Block ciphers, instead, break the plaintext into sections (blocks of 64 or 128 bits) and operate on those blocks to encrypt the plaintext.
-
-
-- ***What is an AEAD?***
-
-"Authenticated Encryption with Associated Data": Encryption that confirms whether the message has been modified or not.
-"Associated Data" speaks for the additional data included that must be authenticated yet not encrypted (Example: A packet header that should be readable but not altered).
-
-
-- ***What is Poly1305?***
-
-Message authentication code (MAC) algorithm that verifies the integrity and authenticity of data.
-Typically used in ChaCha20 for the authentication part of the process.
-
-- ***What are test vectors?***
-
-Pre-defined plaintexts and expected ciphertext used to test cryptographic algorithms.
+<h5 align="center">Developed by Pablo Gutiérrez - October 2024</h5>
