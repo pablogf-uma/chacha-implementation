@@ -1,9 +1,16 @@
 <h1 align="center">ChaCha20 Implementation</h1>
-This repository contains a C implementation of the stream cipher algorithm ChaCha. Find below some useful links that were used throughout the development of this project:
+
+This repository contains a C implementation of the stream cipher algorithm ChaCha20.
+
+The program contains 5 test vectors (3 from RFC RFC 8439) that confirm the correct functioning of the encryption algorithm.
+
+Finally, this program specifies the throughput of the cryptosystem (135.5 MB/second), as well as the number of encryptions performed in 1 second (2.5 million calls for plaintexts of 512 bits).
+
+Find below some useful links that were used throughout the development of this project: 
 
 - [Paper](https://cr.yp.to/chacha/chacha-20080120.pdf)
 
-- [RFC](https://datatracker.ietf.org/doc/html/draft-agl-tls-chacha20poly1305-04#section-7)
+- [RFC 8439](https://www.rfc-editor.org/rfc/rfc8439#section-2.1.1)
 
 - [Algorithm Explanation](https://musigma.blog/2021/02/06/chacha.html)
   
@@ -11,25 +18,3 @@ This repository contains a C implementation of the stream cipher algorithm ChaCh
 
 ---
 
-<h3>Introductory Questions:</h3>
-
-- ***What is a stream cipher? What makes a stream cipher different from a block cipher?***
-  
-A stream cipher is a type of encryption algorithm that encrypts byte by byte (or bit by bit) continuously. 
-Block ciphers, instead, break the plaintext into sections (blocks of 64 or 128 bits) and operate on those blocks to encrypt the plaintext.
-
-
-- ***What is an AEAD?***
-
-"Authenticated Encryption with Associated Data": Encryption that confirms whether the message has been modified or not.
-"Associated Data" speaks for the additional data included that must be authenticated yet not encrypted (Example: A packet header that should be readable but not altered).
-
-
-- ***What is Poly1305?***
-
-Message authentication code (MAC) algorithm that verifies the integrity and authenticity of data.
-Typically used in ChaCha20 for the authentication part of the process.
-
-- ***What are test vectors?***
-
-Pre-defined plaintexts and expected ciphertext used to test cryptographic algorithms.
