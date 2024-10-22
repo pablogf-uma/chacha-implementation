@@ -4,6 +4,8 @@ This repository contains a C implementation of the stream cipher algorithm ChaCh
 
 The program contains 5 test vectors (3 from RFC 8439) that confirm the correct functioning of the encryption algorithm.
 
+The project contains a python script that generates custom test vectors.
+
 The throughput of the cryptosystem is 135.5 MB/second with an i7-13620H Intel processor.
 
 Performs 2.5 million encryptions for different 512-bit plaintexts in 1 second.
