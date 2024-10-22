@@ -69,10 +69,10 @@ void calculate_throughput_2()
     clock_t start_time = clock();
 
     // Counter for number of bytes processed.
-    int bytes_processed = 0;
+    uint32_t bytes_processed = 0;
 
     // Counter for number of encrypt() calls.
-    int encrypt_calls = 0;
+    uint32_t encrypt_calls = 0;
 
     // Start values for the encryption function´s parameters.
     uint32_t state[16] = {0};
@@ -99,11 +99,9 @@ void calculate_throughput_2()
             };
     uint32_t expected_ciphertext = 0;
 
-    do {
-        clock_t current_time = clock(); // Get the current time at the begining of the loop.
+    test_vector_t test;
 
-        // Run the encryption algorithm with the updated parameters.
-        test_vector_t test;
+    do {
 
         // Copy the parameters to the test struct.
         memcpy(test.key, key, sizeof(key));
@@ -111,10 +109,13 @@ void calculate_throughput_2()
         test.blockcount = blockcount;
         memcpy(test.plaintext, plaintext, sizeof(plaintext));
 
+        clock_t current_time = clock(); // Get the current time at the begining of the loop.
+
+        // Run the encryption algorithm with the updated parameters.
         encrypt(state, "expand 32-byte k", test.key, test.blockcount, test.nonce, test.plaintext, test.expected_ciphertext);
 
         // Update the number of bytes processe and the number of encrypt() calls.
-        bytes_processed += 64;
+        bytes_processed += 64; // number of bytes of the plaintext.
         encrypt_calls += 1;
 
         // Generate 3 random numbers for the positions where the parameters will be updated for the next iteration.
@@ -130,7 +131,7 @@ void calculate_throughput_2()
         // Update the parameters at random indexes with a random input
         key[rand_num_key] = rand() % 256;
         nonce[rand_num_nonce] = rand() % 256;
-        blockcount = rand();
+        blockcount = rand() % 256;
         plaintext[rand_num_plaintext] = rand() % 256;
 
     } while (((double)(clock() - start_time)) / CLOCKS_PER_SEC < 1.0); // Loop until 1 second has passed.
