@@ -13,9 +13,9 @@ This repository contains a C implementation of the stream cipher algorithm ChaCh
 
 <h2>Performance:</h2>
 
-- Throughput: 135.5 MB/second with an i7-13620H Intel processor.
+- Throughput: 167.5 MB/second with an i7-13620H Intel processor.
 
-- Performs 2.5 million encryptions for different 512-bit plaintexts in 1 second.
+- Performs 2.6 million encryptions for different 512-bit plaintexts in 1 second.
 
 
 <h2>Resources:</h2>
