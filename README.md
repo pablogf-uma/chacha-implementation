@@ -2,6 +2,7 @@
 
 
 This repository contains a C implementation of the stream cipher algorithm ChaCha20.
+
 Developed by Pablo Gutiérrez in October 2024.
 
 
@@ -9,7 +10,7 @@ Developed by Pablo Gutiérrez in October 2024.
 
 - Source code of the algorithm.
 - Test vectors (3 from RFC 8439 and a total of 5) that confirm the correct functioning algorithm.
-- A python script that generates custom test vectors.
+- A Python script that generates custom test vectors.
 
 
 <h2>Performance:</h2>
