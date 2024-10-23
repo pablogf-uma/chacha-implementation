@@ -14,7 +14,7 @@ $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -O -o $(TARGET)
 
 # Create all .o files
-chacha.o: chacha.c
+chacha20.o: chacha20.c
 	$(CC) $(CFLAGS) chacha20.c
 
 quarter_round.o: quarter_round.c
