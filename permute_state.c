@@ -5,6 +5,7 @@
 
 void permute_state(uint32_t state[16], uint32_t output_keystream[64])
 {
+    // Make copy of the original state, for later addition to the permuted state
     uint32_t original_state[16];
     for (int i = 0; i < 16; i++) {
         original_state[i] = state[i];
