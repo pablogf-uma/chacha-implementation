@@ -3,7 +3,8 @@
 #include <string.h>
 #include "chacha20_functions.h"
 
-int main() {
+int main() 
+{
     // Define test vectors.
     test_vector_t tests[] = {
         // Test vector 0 (RFC)
@@ -211,26 +212,27 @@ int main() {
     };
 
     /* TEST VECTOR EXECUTION:*/
-
-    int num_tests = sizeof(tests) / sizeof(test_vector_t);
+    // size of tests in bytes/size of one test_vector)
+    int num_tests = sizeof(tests) / sizeof(test_vector_t); 
     int passed_tests = 0;
-
+    
     for (int i = 0; i < num_tests; i++) {
         if (run_test(&tests[i])) {
             printf("Test vector %d passed.\n", i);
+            fflush(stdout);
             passed_tests++;
         } else {
             printf("Test vector %d failed.\n", i);
+            fflush(stdout);
         }
         printf("\n");
     }
 
     printf("%d/%d tests passed.\n", passed_tests, num_tests);
-   
     printf("\n---------------------------------------------\n\n");
 
    /* CALCULATE THROUGHPUT: */
-
+   
     calculate_throughput_2();
 
     return 0;

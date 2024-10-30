@@ -1,7 +1,7 @@
 # -*- MakeFile -*-
 
 CC = gcc # Compiler used
-CFLAGS = -O -c # Flags used to create each .o file, with minimum optimization level (the optimal after trying all options)
+CFLAGS = -O3 -Wall -c # Flags used to create each .o file, with minimum optimization level (the optimal after trying all options)
 
 TARGET = chacha20 # This is the final executable file
 OBJS = chacha20.o quarter_round.o state_init.o permute_state.o encrypt.o run_test.o calculate_throughput.o # These are all the .o files required to generate the executable
@@ -11,7 +11,7 @@ OBJS = chacha20.o quarter_round.o state_init.o permute_state.o encrypt.o run_tes
 
 # Create executable
 $(TARGET): $(OBJS)
-	$(CC) $(OBJS) -O -o $(TARGET)
+	$(CC) $(OBJS) -O3 -Wall -o $(TARGET)
 
 # Create all .o files
 chacha20.o: chacha20.c
