@@ -58,6 +58,7 @@ void permute_state(uint32_t state[16], uint32_t output_keystream[64])
 
     // Serialize the permuted state into the output keystream
     for (size_t i = 0; i < 16; i++) {
+
         uint32_t word = state[i];
         output_keystream[i * 4] = (word >> 0)  & 0xFF;
         output_keystream[i * 4 + 1] = (word >> 8)  & 0xFF;

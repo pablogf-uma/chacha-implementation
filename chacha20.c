@@ -219,11 +219,9 @@ int main()
     for (int i = 0; i < num_tests; i++) {
         if (run_test(&tests[i])) {
             printf("Test vector %d passed.\n", i);
-            fflush(stdout);
             passed_tests++;
         } else {
             printf("Test vector %d failed.\n", i);
-            fflush(stdout);
         }
         printf("\n");
     }
