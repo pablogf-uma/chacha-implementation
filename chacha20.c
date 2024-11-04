@@ -189,7 +189,6 @@ int main()
         },
 
         // Test vector 4 (using test_vector generator)
-
             {
                 .key = { 
                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
