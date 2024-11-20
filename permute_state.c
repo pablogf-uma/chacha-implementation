@@ -3,7 +3,7 @@
 # include <string.h>
 # include "chacha20_functions.h"
 
-void permute_state(uint32_t state[16], uint32_t output_keystream[64])
+void permute_state(uint32_t state[16], uint8_t output_keystream[64])
 {
     // Make copy of the original state, for later addition to the permuted state
     uint32_t original_state[16];

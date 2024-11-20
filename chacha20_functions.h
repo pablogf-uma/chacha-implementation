@@ -10,7 +10,7 @@ void diagonals(uint32_t state[]);
 
 void state_init(uint32_t state[16], const char *constant, const uint8_t key[32], uint32_t blockcount, const uint8_t nonce[12]);
 
-void permute_state(uint32_t state[16], uint32_t output_keystream[64]);
+void permute_state(uint32_t state[16], uint8_t output_keystream[64]);
 
 void encrypt(uint32_t state[16], const char *constant, const uint8_t key[32], uint32_t blockcount, const uint8_t nonce[12], char *plaintext, char *output);
 
@@ -21,5 +21,9 @@ int run_test(test_vector_t *test);
 void calculate_throughput(test_vector_t *test);
 
 void calculate_throughput_2();
+
+void decrypt(uint32_t state1[16], const char *constant, const uint8_t key[32], uint32_t blockcount, const uint8_t nonce[12], char *output_plaintext, char *ciphertext);
+
+int run_decrypt_test(test_vector_t *test);
 
 #endif // CHACHA20_FUNCTIONS_H
