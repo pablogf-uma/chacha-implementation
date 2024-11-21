@@ -11,7 +11,7 @@ OBJS = chacha20.o quarter_round.o state_init.o permute_state.o encrypt.o run_tes
 
 # Create executable
 $(TARGET): $(OBJS)
-	$(CC) $(OBJS) -O2 -Wall -o $(TARGET)
+	$(CC) $(OBJS) -O3 -Wall -o $(TARGET)
 
 # Create all .o files
 chacha20.o: chacha20.c

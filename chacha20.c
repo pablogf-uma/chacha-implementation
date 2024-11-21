@@ -5,7 +5,7 @@
 
 int main() 
 {
-    /* TEST VECTOR DEFINITION */
+    /* TEST VECTOR DEFINITION*/ 
     test_vector_t test_vectors[] = {
 
 
@@ -211,6 +211,8 @@ int main()
             
         },
     };
+
+
     test_vector_t clock_cycle_tests[] = {
                 
         // CLOCK CYCLES PER BYTE INPUT
@@ -725,7 +727,7 @@ int main()
     
     };
 
-    /* TEST VECTOR OUTPUT*/
+    /* TEST VECTOR OUTPUT */
     printf("\n---------------TEST VECTORS---------------\n\n");
     int num_tests1 = sizeof(test_vectors) / sizeof(test_vector_t); // Size of tests in bytes/size of one test_vector
     int passed_tests = 0;
@@ -742,7 +744,7 @@ int main()
     }
     printf("%d/%d tests passed.\n", passed_tests, num_tests1);
 
-    /* CLOCK CYCLES OUTPUT */
+    /* CLOCK CYCLES OUTPUT */ 
     printf("\n---------------CLOCK CYCLES---------------\n\n");
     int num_tests2 = sizeof(clock_cycle_tests) / sizeof(test_vector_t);
 

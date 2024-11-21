@@ -5,6 +5,7 @@
 
 void permute_state(uint32_t state[16], uint8_t output_keystream[64])
 {
+    
     // Make copy of the original state, for later addition to the permuted state
     uint32_t original_state[16];
     for (int i = 0; i < 16; i++) {
@@ -58,12 +59,16 @@ void permute_state(uint32_t state[16], uint8_t output_keystream[64])
 
     // Serialize the permuted state into the output keystream
     for (size_t i = 0; i < 16; i++) {
-
         uint32_t word = state[i];
         output_keystream[i * 4] = (word >> 0)  & 0xFF;
         output_keystream[i * 4 + 1] = (word >> 8)  & 0xFF;
         output_keystream[i * 4 + 2] = (word >> 16) & 0xFF;
         output_keystream[i * 4 + 3] = (word >> 24) & 0xFF;
+
+        // Inline assembly statement that acts as memory barrier
+        // This prevents the compiler from reordering the writes to output_keystream, 
+        //      ensuring that the loop performs as expected even under -O3 optimizer.
+        __asm__ __volatile__("" ::: "memory"); 
     }
     
 /* TEST:
