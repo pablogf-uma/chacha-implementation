@@ -29,5 +29,3 @@ These resources were used throughout the development of the project outlined abo
 - [Algorithm Explanation](https://musigma.blog/2021/02/06/chacha.html)
   
 - [Algorithm Design](https://loup-vaillant.fr/tutorials/chacha20-design)
-
-<h5 align="center">Developed by Pablo Gutiérrez - October 2024</h5>
