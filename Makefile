@@ -4,7 +4,7 @@ CC = gcc # Compiler used
 CFLAGS = -O2 -Wall -c # Flags used to create each .o file, with minimum optimization level (the optimal after trying all options)
 
 TARGET = chacha20 # This is the final executable file
-OBJS = chacha20.o quarter_round.o state_init.o permute_state.o encrypt.o run_test.o calculate_throughput.o decrypt.o run_decrypt_test.o # These are all the .o files required to generate the executable
+OBJS = chacha20.o quarter_round.o state_init.o permute_state.o encrypt.o run_encrypt_test.o calculate_throughput.o decrypt.o run_decrypt_test.o # These are all the .o files required to generate the executable
 
 # Using the previous variables, create the prompts
 # For variable substituiton within the makefile put them inside $(here) 
@@ -29,8 +29,8 @@ permute_state.O: state_init.c
 encrypt.O: encrypt.c
 	$(CC) $(CFLAGS) encrypt.c
 
-run_test.o: run_test.c
-	$(CC) $(CFLAGS) run_test.c
+run_encrypt_test.o: run_encrypt_test.c
+	$(CC) $(CFLAGS) run_encrypt_test.c
 
 calculate_throughput.o: calculate_throughput.c
 	$(CC) $(CFLAGS) calculate_throughput.c

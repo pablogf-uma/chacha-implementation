@@ -16,7 +16,7 @@ void encrypt(uint32_t state[16], const char *constant, const uint8_t key[32], ui
 
 typedef struct {uint8_t key[32]; uint8_t nonce[12]; uint32_t blockcount; char plaintext[100000]; char expected_ciphertext[100000];} test_vector_t;
 
-int run_test(test_vector_t *test);
+int run_encrypt_test(test_vector_t *test);
 
 void calculate_throughput(test_vector_t *test);
 
