@@ -26,4 +26,8 @@ void decrypt(uint32_t state1[16], const char *constant, const uint8_t key[32], u
 
 int run_decrypt_test(test_vector_t *test);
 
+void encrypt_custom_input(char *ciphertext);
+
+void decrypt_custom_input(char *plaintext);
+
 #endif // CHACHA20_FUNCTIONS_H
