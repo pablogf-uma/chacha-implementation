@@ -32,7 +32,7 @@ void decrypt_custom_input(char *plaintext)
         nonce[i] = (uint8_t)nonce_char[i];
     }
 
-    printf("Custom input (hex string):\n");
+    printf("Ciphertext (hex string):\n");
     scanf("%s", input);
     size_t input_len = strlen(input);
     size_t translated_len = input_len / 2;
