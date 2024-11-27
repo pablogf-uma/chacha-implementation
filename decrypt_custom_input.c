@@ -13,7 +13,7 @@ void decrypt_custom_input(char *plaintext)
     char input[256];
     uint8_t translated_input[256] = {0};
 
-    printf("\nKey (32 bytes):\n");
+    printf("\nKey (32 characters/256 bits):\n");
     // Read key as a string
     fgets(key_char, sizeof(key_char), stdin);
     int key_char_len = strlen(key_char);
@@ -28,7 +28,7 @@ void decrypt_custom_input(char *plaintext)
     while ((c = getchar()) != '\n' && c != EOF);
     
     // Same operation for the nonce
-    printf("\nNonce (12 bytes):\n");
+    printf("\nNonce (12 characters/96 bits):\n");
     fgets(nonce_char, sizeof(nonce_char), stdin);
     int nonce_char_len = strlen(nonce_char);
 
@@ -51,13 +51,15 @@ void decrypt_custom_input(char *plaintext)
         translated_input[i] = (uint8_t)strtol(hex_pair, NULL, 16);
     }
 
+    /* TEST
     for (size_t i = 0; i < translated_len; i++) {
         printf("%02X ", translated_input[i]);
     }
-    printf("\n");
+    printf("\n");*/
 
     decrypt(state, "expand 32-byte k", key, 0, nonce, plaintext, (char *)translated_input);
 
     printf("\nPlaintext:\n");
     printf("%s", plaintext);
+    printf("\n");
 }
