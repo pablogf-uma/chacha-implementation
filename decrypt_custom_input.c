@@ -13,7 +13,7 @@ void decrypt_custom_input(char *plaintext)
     char input[256];
     uint8_t translated_input[256] = {0};
 
-    printf("\nKey (32 characters/256 bits):\n");
+    printf("\nInsert 256-bit Key (32 characters):\n");
     // Read key as a string
     fgets(key_char, sizeof(key_char), stdin);
     int key_char_len = strlen(key_char);
@@ -28,7 +28,7 @@ void decrypt_custom_input(char *plaintext)
     while ((c = getchar()) != '\n' && c != EOF);
     
     // Same operation for the nonce
-    printf("\nNonce (12 characters/96 bits):\n");
+    printf("\nInsert 96-bit Nonce (12 characters):\n");
     fgets(nonce_char, sizeof(nonce_char), stdin);
     int nonce_char_len = strlen(nonce_char);
 
@@ -40,7 +40,7 @@ void decrypt_custom_input(char *plaintext)
     int d;
     while ((d = getchar()) != '\n' && d != EOF);
 
-    printf("\nCiphertext (in hex: 8B1C...):\n");
+    printf("\nInsert Ciphertext (in hex: 8B1C...):\n");
     fgets(input, sizeof(input), stdin);
     int ciphertext_len = strlen(input) - 1; // -1 to eliminate the null terminator from the input string
 
