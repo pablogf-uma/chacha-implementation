@@ -11,7 +11,7 @@ void decrypt_custom_input(char *plaintext)
     uint8_t nonce[12];
     char nonce_char[13];
     char input[256];
-    uint8_t translated_input[256] = {0};
+    uint8_t translated_input[256] = {0}; // To hold the input once it is transformed from string to bytes
 
     printf("\nInsert 256-bit Key (32 characters):\n");
     // Read key as a string
