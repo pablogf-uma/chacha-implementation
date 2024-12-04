@@ -31,10 +31,10 @@ quarter_round.o: quarter_round.c
 state_init.o: state_init.c
 	$(CC) $(CFLAGS) state_init.c
 
-permute_state.O: state_init.c
-	$(CC) $(CFLAGS) state_init.c
+permute_state.o: permute_state.c
+	$(CC) $(CFLAGS) permute_state.c
 
-encrypt.O: encrypt.c
+encrypt.o: encrypt.c
 	$(CC) $(CFLAGS) encrypt.c
 
 run_encrypt_test.o: run_encrypt_test.c
