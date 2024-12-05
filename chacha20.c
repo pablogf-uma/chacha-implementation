@@ -745,17 +745,17 @@ int main(int argc, char *argv[]) {
     if (strcmp(argv[1], "--enc-tv") == 0) {
         run_enc_test_vector++;
         run_all_tests = 0;
-        test_vector_index = atoi(argv[2]);
+        test_vector_index = atoi(argv[2]) - 1;
 
     } else if (strcmp(argv[1], "--dec-tv") == 0) {
         run_dec_test_vector++;
         run_all_tests = 0;
-        test_vector_index = atoi(argv[2]);
+        test_vector_index = atoi(argv[2]) - 1;
 
     } else if (strcmp(argv[1], "--clock-ct") == 0) {
         run_clock_cycle_test++;
         run_all_tests = 0;
-        test_vector_index = atoi(argv[2]);
+        test_vector_index = atoi(argv[2]) - 1;
 
     } else if (strcmp(argv[1], "--enc-ci") == 0) {
         run_enc_custom_input++;
@@ -773,7 +773,7 @@ int main(int argc, char *argv[]) {
 
     if (run_all_tests || run_enc_test_vector) {
 
-        printf("TEST VECTOR %d:\n", test_vector_index);
+        printf("TEST VECTOR %d:\n", test_vector_index + 1);
         if (run_encrypt_test(&test_vectors[test_vector_index])) {
             printf("\033[0;32mEncryption successful for test vector %i!\033[0m\n", test_vector_index);
         } else {
@@ -784,7 +784,7 @@ int main(int argc, char *argv[]) {
 
     if (run_all_tests || run_dec_test_vector) {
 
-        printf("TEST VECTOR %d:\n", test_vector_index);
+        printf("TEST VECTOR %d:\n", test_vector_index + 1);
         if (run_decrypt_test(&test_vectors[test_vector_index])) {
             printf("\033[0;32mDecryption successful for test vector %i!\033[0m\n", test_vector_index);
         } else {
