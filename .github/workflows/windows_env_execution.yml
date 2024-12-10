@@ -42,4 +42,4 @@ jobs:
       # Run the program
       - name: Run the program
         run: |
-          ./chacha20 --enc-tv
+          ./chacha20 --all-tests
