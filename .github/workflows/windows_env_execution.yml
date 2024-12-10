@@ -1,0 +1,35 @@
+name: Windows Environment Execution
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  run-on-windows:
+    runs-on: windows-latest
+
+    steps:
+      # Step 1: Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up the environment
+      - name: Set up environment
+        run: |
+          choco install mingw -y # Install MinGW for GCC
+          refreshenv # Refresh the environment variables
+          mkdir build
+          cd build
+          cmake .. -G "MinGW Makefiles" # Generate makefiles for MinGW
+          cmake --build .              # Build the project
+
+      # Step 3: Run your application
+      - name: Run the application
+        run: |
+          cd build
+          ./chacha20 --enc-tv
