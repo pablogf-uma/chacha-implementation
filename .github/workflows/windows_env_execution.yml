@@ -14,27 +14,22 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      # Step 1: Check out the code
+      # Check out the code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Debug - List repository files
-      - name: List repository files
-        run: |
-          dir /s
-
-      # Step 3: Set up environment
+      # Set up environment
       - name: Set up environment
         run: |
           choco install mingw -y # Install MinGW for GCC
           refreshenv # Refresh environment variables
 
-      # Step 4: Build the project
+      # Build the project
       - name: Build the project
         run: |
           mingw32-make # Use MinGW's make command
 
-      # Step 5: Run your application
+      # Run your application
       - name: Run the application
         run: |
           ./chacha20 --enc-tv
