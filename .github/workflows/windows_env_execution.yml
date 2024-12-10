@@ -18,18 +18,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up environment
-      - name: Set up environment
+      # Install MinGW using Chocolatey
+      - name: Install MinGW
         run: |
-          choco install mingw -y # Install MinGW for GCC
-          refreshenv # Refresh environment variables
+          choco install mingw -y
+
+      # Add MinGW to PATH
+      - name: Add MinGW to PATH
+        run: |
+          echo "::add-path::C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
+
+      # Debug - Verify MinGW installation
+      - name: Verify MinGW
+        run: |
+          gcc --version
+          mingw32-make --version
 
       # Build the project
       - name: Build the project
         run: |
-          mingw32-make # Use MinGW's make command
+          mingw32-make
 
-      # Run your application
-      - name: Run the application
+      # Run the program
+      - name: Run the program
         run: |
           ./chacha20 --enc-tv
