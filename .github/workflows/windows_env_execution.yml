@@ -23,10 +23,10 @@ jobs:
         run: |
           choco install mingw -y
 
-      # Add MinGW to PATH
+      # Add MinGW to PATH using CMD
       - name: Add MinGW to PATH
         run: |
-          echo "::add-path::C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
+          setx PATH "%PATH%;C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
 
       # Debug - Verify MinGW installation
       - name: Verify MinGW
