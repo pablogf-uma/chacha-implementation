@@ -3,7 +3,7 @@
 # Number of runs per test
 runs=100
 
-csv_file="benchmarking_chacha20.csv"
+csv_file="generated_results.csv"
 
 echo "Initializing CSV file: $csv_file"
 
