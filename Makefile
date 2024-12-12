@@ -8,7 +8,7 @@ else
 endif
 
 CC = gcc # Compiler used
-CFLAGS = -O3 -march=native -Wall -flto -fprofile-use -c # Flags used to create each .o file, with minimum optimization level (the optimal after trying all options)
+CFLAGS = -O3 -march=native -Wall -flto -fprofile-use -c # Flags used to create each .o file
 
 TARGET = chacha20 # This is the final executable file
 OBJS = chacha20.o quarter_round.o state_init.o permute_state.o encrypt.o run_encrypt_test.o \
