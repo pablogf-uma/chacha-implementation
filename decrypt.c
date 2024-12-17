@@ -7,6 +7,7 @@
 void decrypt(uint32_t state1[16], const char *constant, const uint8_t key[32], uint32_t blockcount, const uint8_t nonce[12], char *output_plaintext, char *ciphertext)
 {
     size_t ciphertext_len = strlen(ciphertext);
+    
     // Calculate the number of full 128-byte blocks needed
     size_t n_blocks = (ciphertext_len + 63) / 64; // Calculate the number of 64-byte blocks needed
 

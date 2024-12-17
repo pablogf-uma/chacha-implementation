@@ -10,13 +10,15 @@ int run_decrypt_test(test_vector_t *test) {
     uint32_t state1[16];
     unsigned long plaintext_length = strlen(test->plaintext);
     char ciphertext[plaintext_length];
-
-    // Start cycle counting.
-    unsigned long long start_cycles = __rdtsc();
     
     encrypt(state1, "expand 32-byte k", test->key, test->blockcount, test->nonce, test->plaintext, ciphertext);
 
-    char output_plaintext[strlen(ciphertext)];
+    unsigned long ciphertext_length = strlen(ciphertext);
+    char output_plaintext[ciphertext_length];
+
+    // Start cycle counting.
+    unsigned long long start_cycles = __rdtsc();
+
     decrypt(state1, "expand 32-byte k", test->key, test->blockcount, test->nonce, output_plaintext, ciphertext);
     
     // End cycle counting.
@@ -29,8 +31,7 @@ int run_decrypt_test(test_vector_t *test) {
     printf("\nClock cycles per byte: %.2f\n", cycles_per_byte);
 
     // Compare output plaintext with expected original plaintext.
-    if (memcmp(output_plaintext, test->plaintext, strlen(ciphertext)) == 0) {
-        
+    if (memcmp(test->plaintext, output_plaintext, ciphertext_length) == 0) {
         return 1;
     } else {
         return 0;

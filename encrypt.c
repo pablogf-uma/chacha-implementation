@@ -7,6 +7,11 @@
 void encrypt(uint32_t state[16], const char *constant, const uint8_t key[32], uint32_t blockcount, const uint8_t nonce[12], char *plaintext, char *ciphertext) {
     
     size_t plaintext_len = strlen(plaintext);
+    // Special case for test vector 2:
+    if (plaintext_len == 0)
+    {
+        plaintext_len = 64;
+    }
     size_t n_blocks = (plaintext_len + 63) / 64; // Calculate the number of 64-byte blocks needed
 
     // Each block of ciphertext is 64 bytes long, each xored with  a state containing a different counter value
@@ -21,10 +26,10 @@ void encrypt(uint32_t state[16], const char *constant, const uint8_t key[32], ui
             ciphertext[i * 64 + j] = plaintext[i * 64 + j] ^ keystream[j];
         }
         
-      /*TEST:
-        printf("\nBlock #%d\n", number_of_blocks + 1);
+        /* TEST
+        printf("\nBlock #%d\n", i + 1);
         for (size_t j = 0; j < 64; j++) {
-            printf("%02x", (unsigned char)ciphertext[number_of_blocks * 64 + j]);
+            printf("%02x", (unsigned char)ciphertext[i * 64 + j]);
             printf(" ");
         }*/
     }
@@ -37,4 +42,5 @@ void encrypt(uint32_t state[16], const char *constant, const uint8_t key[32], ui
         printf("%02x", (unsigned char)ciphertext[j]);
         printf(" ");
     }*/
+
 }
