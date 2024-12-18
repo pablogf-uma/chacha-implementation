@@ -9,7 +9,6 @@ int run_encrypt_test(test_vector_t *test) {
 
     uint32_t state[16];
     unsigned long plaintext_length = test->plaintext_length;
-    
     char ciphertext[plaintext_length];
 
     // Start cycle counting.
