@@ -71,12 +71,11 @@ void permute_state(uint32_t state[16], uint8_t output_keystream[64])
         __asm__ __volatile__("" ::: "memory"); 
     }
     
-/* TEST:
+    /* TEST
     for (int i = 0; i < 64; i++) {
         printf("%02x", output_keystream[i]);
         printf(":");
     }
     printf("\b \b");
-    printf("\n");
-*/
+    printf("\n");*/
 }

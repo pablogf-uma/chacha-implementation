@@ -120,7 +120,7 @@ void calculate_throughput_2()
         memcpy(test.plaintext, plaintext, sizeof(plaintext));
 
         // Run the encryption algorithm with the updated parameters.
-        encrypt(state, "expand 32-byte k", test.key, test.blockcount, test.nonce, test.plaintext, test.expected_ciphertext);
+        encrypt(state, "expand 32-byte k", test.key, test.blockcount, test.nonce, test.plaintext, test.expected_ciphertext, 64);
 
         // Update the number of bytes processe and the number of encrypt() calls.
         bytes_processed += 64; // number of bytes of the plaintext.

@@ -60,7 +60,7 @@ void decrypt_custom_input(char *plaintext)
     }
     printf("\n");*/
 
-    decrypt(state, "expand 32-byte k", key, 0, nonce, plaintext, (char *)translated_input);
+    decrypt(state, "expand 32-byte k", key, 0, nonce, plaintext, (char *)translated_input, translated_len);
 
     printf("\nPlaintext:\n");
     printf("%s", plaintext);

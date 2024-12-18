@@ -4,15 +4,9 @@
 # include <string.h>
 # include "chacha20_functions.h"
 
-void encrypt(uint32_t state[16], const char *constant, const uint8_t key[32], uint32_t blockcount, const uint8_t nonce[12], char *plaintext, char *ciphertext) {
+void encrypt(uint32_t state[16], const char *constant, const uint8_t key[32], uint32_t blockcount, const uint8_t nonce[12], char *plaintext, char *ciphertext, unsigned long plaintext_length) {
     
-    size_t plaintext_len = strlen(plaintext);
-    // Special case for test vector 2:
-    if (plaintext_len == 0)
-    {
-        plaintext_len = 64;
-    }
-    size_t n_blocks = (plaintext_len + 63) / 64; // Calculate the number of 64-byte blocks needed
+    size_t n_blocks = (plaintext_length + 63) / 64; // Calculate the number of 64-byte blocks needed
 
     // Each block of ciphertext is 64 bytes long, each xored with  a state containing a different counter value
     for (int i = 0; i < n_blocks; i++) {
@@ -22,7 +16,7 @@ void encrypt(uint32_t state[16], const char *constant, const uint8_t key[32], ui
         state_init(state, constant, key, blockcount + i, nonce);
         permute_state(state, keystream);
 
-        for (size_t j = 0; j < 64 && (i * 64 + j) < plaintext_len; j++) {
+        for (size_t j = 0; j < 64 && (i * 64 + j) < plaintext_length; j++) {
             ciphertext[i * 64 + j] = plaintext[i * 64 + j] ^ keystream[j];
         }
         
@@ -31,16 +25,16 @@ void encrypt(uint32_t state[16], const char *constant, const uint8_t key[32], ui
         for (size_t j = 0; j < 64; j++) {
             printf("%02x", (unsigned char)ciphertext[i * 64 + j]);
             printf(" ");
-        }*/
+        }
+        printf("\n");*/
     }
     
     // Add the null terminator to the output string
-    ciphertext[plaintext_len] = '\0';
+    ciphertext[plaintext_length] = '\0';
     
     /* TEST
-    for (size_t j = 0; j < plaintext_len; j++) {
+    for (size_t j = 0; j < plaintext_length; j++) {
         printf("%02x", (unsigned char)ciphertext[j]);
         printf(" ");
     }*/
-
 }

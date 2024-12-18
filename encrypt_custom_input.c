@@ -77,7 +77,7 @@ void encrypt_custom_input(char *ciphertext)
     }
     printf("\n");*/
     
-    encrypt(state, "expand 32-byte k", key, 0, nonce, input, ciphertext);
+    encrypt(state, "expand 32-byte k", key, 0, nonce, input, ciphertext, plaintext_len);
 
     printf("\nCiphertext (in hex):\n");
     

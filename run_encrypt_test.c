@@ -7,21 +7,15 @@
 // Function to run a single test
 int run_encrypt_test(test_vector_t *test) {
 
-    
     uint32_t state[16];
-    unsigned long plaintext_length = strlen(test->plaintext);
-    // Special case for test vector 2:
-    if (plaintext_length == 0)
-    {
-        plaintext_length = 64;
-    }
+    unsigned long plaintext_length = test->plaintext_length;
     
     char ciphertext[plaintext_length];
 
     // Start cycle counting.
     unsigned long long start_cycles = __rdtsc();
     
-    encrypt(state, "expand 32-byte k", test->key, test->blockcount, test->nonce, test->plaintext, ciphertext);
+    encrypt(state, "expand 32-byte k", test->key, test->blockcount, test->nonce, test->plaintext, ciphertext, plaintext_length);
 
     // End cycle counting.
     unsigned long long end_cycles = __rdtsc();
