@@ -35,14 +35,18 @@ jobs:
       - name: Build the project
         run: |
           mingw32-make
-      # Run the program
+      # Run the program (which should generate the CSV file)
       - name: Run the program
         run: |
           ./clock_cycles_tests.bat
 
-      # Upload the CSV file as an artifact
+      # Debug - List the files in the workspace to verify CSV location
+      - name: List files in the workspace
+        run: dir
+
+      # Upload the CSV file as an artifact (adjust path based on where the file is generated)
       - name: Upload CSV artifact
         uses: actions/upload-artifact@v3
         with:
           name: csv-output
-          path: ./generated_results_github_actions.csv
+          path: ./generated_results_github_actions.csv  # Adjust this if the file is in a different location
