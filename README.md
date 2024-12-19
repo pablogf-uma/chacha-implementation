@@ -16,17 +16,13 @@ This repository contains a **C implementation** of the stream cipher algorithm *
 
 The following resources were used throughout the development of this project:
 
-- [Paper](https://cr.yp.to/chacha/chacha-20080120.pdf)  
-  Original research paper on ChaCha20 by Daniel J. Bernstein.
+- [Paper](https://cr.yp.to/chacha/chacha-20080120.pdf): Original research paper on ChaCha20 by Daniel J. Bernstein.
 
-- [RFC 8439](https://www.rfc-editor.org/rfc/rfc8439#section-2.1.1)  
-  Standardized specification of ChaCha20 and its use in internet protocols.
+- [RFC 8439](https://www.rfc-editor.org/rfc/rfc8439#section-2.1.1): Standardized specification of ChaCha20 and its use in internet protocols.
 
-- [Algorithm Explanation](https://musigma.blog/2021/02/06/chacha.html)  
-  A detailed explanation of how the ChaCha20 algorithm works.
+- [Algorithm Explanation](https://musigma.blog/2021/02/06/chacha.html): A detailed explanation of how the ChaCha20 algorithm works.
 
-- [Algorithm Design](https://loup-vaillant.fr/tutorials/chacha20-design)  
-  A guide to understanding the design principles of ChaCha20.
+- [Algorithm Design](https://loup-vaillant.fr/tutorials/chacha20-design): A guide to understanding the design principles of ChaCha20.
 
 ---
 
