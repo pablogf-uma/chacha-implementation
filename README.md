@@ -30,48 +30,6 @@ The following resources were used throughout the development of this project:
 
 ---
 
-## Files
-
-The project consists of several source files, each handling a specific aspect of the ChaCha20 algorithm:
-
-- **Makefile**  
-  Contains build instructions for the project.
-
-- **chacha20.c**  
-  Main implementation of the ChaCha20 algorithm.
-
-- **quarter_round.c**  
-  Implementation of the quarter round function used in the algorithm.
-
-- **state_init.c**  
-  Functions for initializing the state.
-
-- **permute_state.c**  
-  Functions for permuting the state.
-
-- **encrypt.c**  
-  Functions for encryption.
-
-- **run_encrypt_test.c**  
-  A test for encryption functionality.
-
-- **calculate_throughput.c**  
-  Functions for calculating throughput.
-
-- **decrypt.c**  
-  Functions for decryption.
-
-- **run_decrypt_test.c**  
-  A test for decryption functionality.
-
-- **encrypt_custom_input.c**  
-  Functions for encrypting custom inputs.
-
-- **decrypt_custom_input.c**  
-  Functions for decrypting custom inputs.
-
----
-
 ## Tests
 
 The compiled executable, `chacha20`, supports the following options for testing and usage:
