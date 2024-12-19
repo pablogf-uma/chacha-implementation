@@ -1,7 +1,20 @@
 <h1 align="center">ChaCha20 Implementation</h1>
 
 This repository contains a **C implementation** of the stream cipher algorithm **ChaCha20**.
+
 It uses a 256-bit encryption key and a 96-bit nonce to ensure data confidentiality and prevent repetition attacks.
+
+Internal functioning of the algorithm:
+- Uses a 512-bit internal state organized as a 4x4 matrix of 32-bit words:
+  - Constants: 4 predefined constant words ("expand 32-byte k").
+  - Key: 8 words derived from the 256-bit key.
+  - Counter: 1 word to keep track of the block number.
+  - Nonce: 3 words for unique encryption sessions.
+- Quarter-Round Function: The core operation mixes words in the matrix using addition, XOR, and bitwise rotation to ensure diffusion and randomness.
+
+- Rounds: The cipher performs 20 rounds (10 iterations of a double-round) to scramble the state thoroughly.
+
+- Keystream Generation: After processing the state, the result is used as a pseudorandom keystream. The plaintext is XOR-ed with this keystream to produce ciphertext.
 
 ---
 
