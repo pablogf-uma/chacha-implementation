@@ -39,14 +39,13 @@ jobs:
       - name: Run the program
         run: |
           ./clock_cycles_tests.bat
-
       # Debug - List the files in the workspace to verify CSV location
       - name: List files in the workspace
         run: dir
 
-      # Upload the CSV file as an artifact (adjust path based on where the file is generated)
+      # Upload the CSV file as an artifact
       - name: Upload CSV artifact
         uses: actions/upload-artifact@v3
         with:
           name: csv-output
-          path: output/generated_results_github_actions.csv
+          path: generated_results.csv
