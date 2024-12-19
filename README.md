@@ -1,14 +1,7 @@
 <h1 align="center">ChaCha20 Implementation</h1>
 
 This repository contains a **C implementation** of the stream cipher algorithm **ChaCha20**.
-
----
-
-## Contents
-
-- Source code of the algorithm.
-- Test vectors (3 from [RFC 8439](https://www.rfc-editor.org/rfc/rfc8439) and a total of 5) to confirm the correct functioning of the algorithm.
-- A Python script that generates custom test vectors.
+It uses a 256-bit encryption key and a 96-bit nonce to ensure data confidentiality and prevent repetition attacks.
 
 ---
 
