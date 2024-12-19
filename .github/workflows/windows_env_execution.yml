@@ -49,4 +49,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: csv-output
-          path: frontend/generated_results_github_actions.csv
+          path: output/generated_results_github_actions.csv
